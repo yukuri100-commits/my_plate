@@ -25,7 +25,7 @@
         const { useState, useRef, useEffect } = React;
         
         // 🔑 Canvas 執行環境會在底層自動注入金鑰，這裡必須保持空白。
-        const apiKey = ""; 
+        const apiKey = null; 
 
         // 幫 API 請求加入指數退避 (Exponential Backoff) 的重試機制
         const fetchWithRetry = async (url, options) => {
@@ -137,7 +137,7 @@
             const generateAudio = async (text) => {
                 setIsGeneratingAudio(true);
                 try {
-                    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`, {
+                    const response = await fetchWithRetry("https://my-plate-api.yukuri100.workers.dev/", {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
